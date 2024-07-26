@@ -483,15 +483,6 @@ export function initResizeHandle(
     setResizing(true)
     idx0 = handleType[0]
     idx1 = handleType[1]
-    if (aspectRatio.value) {
-      if (['tl', 'tm', 'ml', 'bl'].includes(handleType)) {
-        idx0 = 't'
-        idx1 = 'l'
-      } else {
-        idx0 = 'b'
-        idx1 = 'r'
-      }
-    }
     let minHeight = props.minH as number
     let minWidth = props.minW as number
     if (minHeight / minWidth > aspectRatio.value) {

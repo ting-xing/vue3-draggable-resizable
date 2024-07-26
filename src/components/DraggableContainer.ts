@@ -104,7 +104,8 @@ export default defineComponent({
               left: '0',
               top: item + 'px',
               borderTop: `1px dashed ${this.referenceLineColor}`,
-              position: 'absolute'
+              position: 'absolute',
+              zIndex: 99999
             }
           })
         })
