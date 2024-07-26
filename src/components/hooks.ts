@@ -39,6 +39,8 @@ export function initState(props: any, emit: any) {
   const [resizingMinWidth, setResizingMinWidth] = useState<number>(props.minW)
   const [resizingMinHeight, setResizingMinHeight] = useState<number>(props.minH)
   const aspectRatio = computed(() => height.value / width.value)
+  const [parentScaleX,setParentScaleX] = useState<number>(props.parentScaleX)
+  const [parentScaleY,setParentScaleY] = useState<number>(props.parentScaleY)
   watch(
     width,
     (newVal) => {
@@ -73,6 +75,12 @@ export function initState(props: any, emit: any) {
       setEnable(newVal)
     }
   )
+  watch(()=>props.parentScaleX,()=>{
+      setParentScaleX(props.parentScaleX)
+  })
+  watch(()=>props.parentScaleY,()=>{
+      setParentScaleY(props.parentScaleY)
+  })
   return {
     id: getId(),
     width,
@@ -88,6 +96,8 @@ export function initState(props: any, emit: any) {
     resizingMinWidth,
     resizingMinHeight,
     aspectRatio,
+    parentScaleX,
+    parentScaleY,
     setEnable,
     setDragging,
     setResizing,
@@ -132,7 +142,7 @@ export function initLimitSizeAndMethods(
     resizingMaxWidth,
     resizingMaxHeight,
     resizingMinWidth,
-    resizingMinHeight
+    resizingMinHeight,
   } = containerProps
   const { setWidth, setHeight, setTop, setLeft } = containerProps
   const { parentWidth, parentHeight } = parentSize
@@ -248,7 +258,9 @@ export function initDraggableContainer(
     setDragging,
     setEnable,
     setResizing,
-    setResizingHandle
+    setResizingHandle,
+    parentScaleX,
+    parentScaleY
   } = containerProps
   const { setTop, setLeft } = limitProps
   let lstX = 0
@@ -287,8 +299,8 @@ export function initDraggableContainer(
     e.preventDefault()
     if (!(dragging.value && containerRef.value)) return
     const [pageX, pageY] = getPosition(e)
-    const deltaX = pageX - lstPageX
-    const deltaY = pageY - lstPageY
+    const deltaX = (pageX - lstPageX) / parentScaleX.value
+    const deltaY = (pageY - lstPageY) / parentScaleY.value
     let newLeft = lstX + deltaX
     let newTop = lstY + deltaY
     if (referenceLineMap !== null) {
@@ -404,7 +416,9 @@ export function initResizeHandle(
     setResizingMaxWidth,
     setResizingMaxHeight,
     setResizingMinWidth,
-    setResizingMinHeight
+    setResizingMinHeight,
+      parentScaleX,
+      parentScaleY
   } = containerProps
   const { parentWidth, parentHeight } = parentSize
   let lstW = 0
@@ -420,8 +434,8 @@ export function initResizeHandle(
   const resizeHandleDrag = (e: HandleEvent) => {
     e.preventDefault()
     let [_pageX, _pageY] = getPosition(e)
-    let deltaX = _pageX - lstPageX
-    let deltaY = _pageY - lstPageY
+    let deltaX = (_pageX - lstPageX) / parentScaleX.value
+    let deltaY = (_pageY - lstPageY) / parentScaleY.value
     let _deltaX = deltaX
     let _deltaY = deltaY
     if (props.lockAspectRatio) {

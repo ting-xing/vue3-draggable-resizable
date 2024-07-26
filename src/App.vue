@@ -38,6 +38,8 @@
           :disabledH="false"
           :disabledY="false"
           :lockAspectRatio="false"
+          :parent-scale-x="2"
+          :parent-scale-y="2"
           classNameHandle="my-handle"
           @activated="print('activated')"
           @deactivated="print('deactivated')"
@@ -89,10 +91,11 @@ export default defineComponent({
   position: relative;
   border: 1px solid #000;
   user-select: none;
+
+
+  transform: scale(2);
 }
 
 
-.parent .vdr-container {
-  outline-color: #999;
-}
+
 </style>
