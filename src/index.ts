@@ -1,7 +1,2 @@
-import VueDraggableResizable from './components/Vue3DraggableResizable'
-import DraggableContainer from './components/DraggableContainer'
-
-
-export {DraggableContainer, VueDraggableResizable}
-
-
+export {default as VueDraggableResizable} from './components/Vue3DraggableResizable'
+export {default as DraggableContainer} from './components/DraggableContainer'

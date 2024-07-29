@@ -1,6 +1,6 @@
 {
   "name": "@ting-xing/vue3-draggable-resizable",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "private": false,
   "description": "[Vue3 Component] 拖拽缩放并具有自动吸附对齐、参考线等功能",
   "types": "./dist/index.d.ts",
@@ -8,6 +8,13 @@
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "files": [
     "./dist"
   ],
