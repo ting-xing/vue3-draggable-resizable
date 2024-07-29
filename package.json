@@ -1,5 +1,5 @@
 {
-  "name": "vue3-draggable-resizable",
+  "name": "@ting-xing/vue3-draggable-resizable",
   "version": "1.6.1",
   "private": false,
   "description": "[Vue3 Component] 拖拽缩放并具有自动吸附对齐、参考线等功能",
@@ -16,6 +16,7 @@
     "build": "vite build"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "@vitejs/plugin-vue": "^5.0.5",
     "typescript": "^5.5.3",
     "vite": "^5.3.4",

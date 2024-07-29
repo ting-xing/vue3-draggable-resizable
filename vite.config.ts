@@ -3,9 +3,10 @@ import vue from '@vitejs/plugin-vue'
 import {resolve} from 'path'
 // https://github.com/qmhc/vite-plugin-dts
 import dts from 'vite-plugin-dts'
+import terser from '@rollup/plugin-terser';
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [vue(), dts({include:"./src/index.ts"})],
+    plugins: [vue(), dts({include: "./src"}),terser()],
     build: {
         lib: {
             // Could also be a dictionary or array of multiple entry points
@@ -21,7 +22,7 @@ export default defineConfig({
                 // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
                 globals: {
                     vue: 'Vue',
-                },
+                }
             },
         },
     },

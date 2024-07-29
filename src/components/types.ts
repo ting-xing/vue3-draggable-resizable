@@ -22,8 +22,8 @@ export interface ContainerProvider {
   setMatchedLine: SetMatchedLine
   disabled: Ref<boolean>
   adsorbParent: Ref<boolean>
-  adsorbCols: number[]
-  adsorbRows: number[]
+  adsorbCols: Ref<number[]>
+  adsorbRows: Ref<number[]>
 }
 
 export interface MatchedLine {

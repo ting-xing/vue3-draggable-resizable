@@ -71,8 +71,8 @@ export default defineComponent({
     provide('setMatchedLine', setMatchedLine)
     provide('disabled', toRef(props, 'disabled'))
     provide('adsorbParent', toRef(props, 'adsorbParent'))
-    provide('adsorbCols', props.adsorbCols || [])
-    provide('adsorbRows', props.adsorbRows || [])
+    provide('adsorbCols', toRef(props,'adsorbCols') || [])
+    provide('adsorbRows', toRef(props,'adsorbRows') || [])
     return {
       matchedRows,
       matchedCols
