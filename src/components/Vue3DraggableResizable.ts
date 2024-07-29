@@ -168,8 +168,8 @@ const VueDraggableResizable = defineComponent({
         getPositionStore: inject<GetPositionStore>('getPositionStore')!,
         disabled: inject<Ref<boolean>>('disabled')!,
         adsorbParent: inject<Ref<boolean>>('adsorbParent')!,
-        adsorbCols: inject<number[]>('adsorbCols')!,
-        adsorbRows: inject<number[]>('adsorbRows')!,
+        adsorbCols: inject<Ref<number[]>>('adsorbCols')!,
+        adsorbRows: inject<Ref<number[]>>('adsorbRows')!,
         setMatchedLine: inject<SetMatchedLine>('setMatchedLine')!
       }
     }
